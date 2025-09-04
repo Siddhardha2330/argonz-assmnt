@@ -14,7 +14,8 @@ export async function getDb(): Promise<Db> {
     const client = new MongoClient(uri);
     await client.connect();
     cachedClient = client;
-    cachedDb = client.db('task_management_db');
+    // Don't specify database name here since it's already in the URI
+    cachedDb = client.db();
     return cachedDb;
   } catch (error) {
     console.error('MongoDB connection error:', error);
