@@ -1,0 +1,64 @@
+{
+  "name": "task-management-mentor-system",
+  "version": "1.0.0",
+  "description": "Task Management & Mentor System with React and MongoDB",
+  "main": "src/index.tsx",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "dev": "concurrently \"npm:server\" \"npm:client\"",
+    "client": "webpack serve --mode development --open",
+    "server": "nodemon server.js",
+    "setup-db": "node setup_database.js",
+    "test-db": "node test_database.js",
+    "setup-atlas": "node setup_database.js",
+    "test-atlas": "node test_database.js"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "mongodb",
+    "task-management",
+    "mentor-system"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.19.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "concurrently": "^8.2.2",
+    "css-loader": "^6.8.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^3.0.2",
+    "style-loader": "^3.3.0",
+    "ts-loader": "^9.4.0",
+    "typescript": "^5.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
