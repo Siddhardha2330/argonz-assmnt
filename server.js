@@ -6,14 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const uri = "mongodb+srv://22pa1a1275:Thor2330111@cluster.tjefsrm.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://22pa1a1275:Thor2330111@cluster.tjefsrm.mongodb.net/task_management_db?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 let db;
 
 async function connect() {
   if (!db) {
     await client.connect();
-    db = client.db('task_management_db');
+    // Don't specify database name here since it's already in the URI
+    db = client.db();
     console.log('API connected to MongoDB Atlas');
   }
 }
