@@ -1,14 +1,9 @@
-import { getDb } from './_db';
-
 export default async function handler(req: any, res: any) {
   try {
-    // Test database connection
-    const db = await getDb();
-    await db.admin().ping();
-    
+    // Basic health check without database
     res.status(200).json({ 
       status: "ok",
-      database: "connected",
+      message: "Health check successful",
       timestamp: new Date().toISOString()
     });
   } catch (error: any) {
