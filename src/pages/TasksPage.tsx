@@ -15,7 +15,8 @@ const TasksPage: React.FC = () => {
 
   async function fetchCategories() {
     try {
-      const res = await fetch('/api/categories');
+      const base = (process.env.API_BASE_URL || '');
+      const res = await fetch(base + '/api/categories');
       if (!res.ok) throw new Error(`Categories request failed: ${res.status}`);
       const data = await res.json();
       const arr: Category[] = Array.isArray(data) ? data : [];
@@ -33,7 +34,8 @@ const TasksPage: React.FC = () => {
       const params = new URLSearchParams();
       if (searchTerm) params.append('q', searchTerm);
       if (selectedCategory !== 'all') params.append('category', selectedCategory);
-      const res = await fetch(`/api/tasks?${params.toString()}`);
+      const base = (process.env.API_BASE_URL || '');
+      const res = await fetch(`${base}/api/tasks?${params.toString()}`);
       if (!res.ok) throw new Error(`Tasks request failed: ${res.status}`);
       const data = await res.json();
       const arr: Task[] = Array.isArray(data) ? data : [];
