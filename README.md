@@ -34,43 +34,54 @@ A comprehensive task management application with an integrated mentor system, bu
 
 ## 📁 Project Structure
 
+This project is now organized into separate frontend and backend folders for independent deployment:
+
 ```
-├── src/
-│   ├── components/          # Reusable UI components
-│   ├── pages/              # Main page components
-│   │   ├── MentorsPage.tsx # Mentor exploration page
-│   │   └── TasksPage.tsx   # Task management page
-│   ├── types/              # TypeScript type definitions
-│   ├── services/           # API and database services
-│   ├── styles/             # CSS stylesheets
-│   ├── App.tsx            # Main application component
-│   └── index.tsx          # Application entry point
-├── public/                 # Static assets
-├── database_schema.md      # MongoDB schema documentation
-├── setup_database.js       # Database setup script
-├── test_database.js        # Database testing script
-├── webpack.config.js       # Webpack configuration
-└── tsconfig.json          # TypeScript configuration
+├── frontend/               # React frontend application
+│   ├── src/               # React source code
+│   │   ├── components/    # Reusable UI components
+│   │   ├── pages/         # Main page components
+│   │   │   ├── MentorsPage.tsx # Mentor exploration page
+│   │   │   └── TasksPage.tsx   # Task management page
+│   │   ├── types/         # TypeScript type definitions
+│   │   ├── services/      # API service functions
+│   │   ├── styles/        # CSS stylesheets
+│   │   ├── App.tsx        # Main application component
+│   │   └── index.tsx      # Application entry point
+│   ├── public/            # Static assets
+│   ├── package.json       # Frontend dependencies
+│   ├── webpack.config.js  # Webpack configuration
+│   ├── tsconfig.json      # TypeScript configuration
+│   └── vercel.json        # Vercel deployment config
+├── backend/               # Node.js backend API
+│   ├── api/               # API route handlers
+│   ├── server.js          # Express server
+│   ├── setup_database.js  # Database setup script
+│   ├── test_database.js   # Database testing script
+│   ├── database_schema.md # MongoDB schema documentation
+│   ├── package.json       # Backend dependencies
+│   └── README.md          # Backend deployment guide
+└── README.md              # This file
 ```
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### Frontend Development
 ```bash
+cd frontend
 npm install
-```
-
-### 2. Setup Database
-```bash
-npm run setup-db
-```
-
-### 3. Start Development Server
-```bash
 npm start
 ```
+The frontend will open at `http://localhost:3000`
 
-The application will open at `http://localhost:3000`
+### Backend Development
+```bash
+cd backend
+npm install
+npm run setup-db
+npm run dev
+```
+The backend API will run at `http://localhost:4000`
 
 ## 📊 Database Setup
 
@@ -154,15 +165,25 @@ npm run test-db
 
 ## 🚀 Deployment
 
-### Build for Production
-```bash
-npm run build
-```
+### Frontend (Vercel)
+1. Navigate to `frontend/` folder
+2. Connect to Vercel
+3. Deploy automatically
 
-### Deploy
-- Copy `dist/` folder to web server
-- Ensure MongoDB connection is configured
-- Set environment variables for production
+### Backend (Render)
+1. Navigate to `backend/` folder
+2. Connect to Render
+3. Set environment variables:
+   - `MONGODB_URI`: Your MongoDB connection string
+   - `JWT_SECRET`: Secret for JWT tokens
+   - `PORT`: 4000 (or let Render assign)
+4. Deploy!
+
+### API Integration
+Once your backend is deployed on Render, update the frontend API calls to use your Render URL:
+```typescript
+const API_BASE_URL = 'https://your-backend.onrender.com';
+```
 
 ## 🤝 Contributing
 
